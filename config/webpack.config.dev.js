@@ -1,10 +1,14 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const publicPath = '/';
+
 const config = {
 	entry: path.resolve(__dirname, '../src/index.js'),
 	output: {
-		publicPath: '/',
-		path: path.resolve(__dirname, '../build/dev'),
-		filename: 'build.js'
+		publicPath: publicPath,
+		path: path.resolve(__dirname, '../build'),
+		filename: 'dev/build.js'
 	},
 	module: {
 		rules: [
@@ -15,7 +19,7 @@ const config = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: 
+			template: path.resolve(__dirname, '../src/public/index.html')
 		})
 	]
 };
