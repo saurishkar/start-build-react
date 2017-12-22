@@ -12,7 +12,12 @@ const config = {
 			{test: /\.css$/, use: {loader: 'style-loader!css-loader'}, exclude: /^.*(bootstrap).*\.css$/},
 			{test: /\.json$/, use: {loader: 'json'}}
 		]
-	}
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 
+		})
+	]
 };
 
 module.exports = config;

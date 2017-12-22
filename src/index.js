@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './public/assets/app.css';
+// import './public/assets/app.css';
 
 class Index extends Component {
 	render() {
