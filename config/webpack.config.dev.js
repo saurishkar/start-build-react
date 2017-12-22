@@ -1,0 +1,38 @@
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+const publicPath = '/';
+
+const config = {
+	entry: path.resolve(__dirname, '../src/index.js'),
+	output: {
+		publicPath: publicPath,
+		path: path.resolve(__dirname, '../build'),
+		filename: 'dev/build.js'
+	},
+	module: {
+		rules: [
+			{test: /\.js$/, use: {loader: 'babel-loader', options: {presets: ['es2015', 'react']}}, exclude: /node_modules/},
+			{
+				test: /\.css$/, 
+				use: ExtractTextWebpackPlugin.extract({
+					fallback: 'style-loader',
+					use: 'css-loader'
+				}),
+				exclude: /^.(bootstrap).*\.css$/
+			},
+			{test: /\.json$/, use: {loader: 'json'}}
+		]
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, '../src/public/index.html')
+		}),
+		new ExtractTextWebpackPlugin('dev/styles.css')
+	]
+};
+
+module.exports = config;
+
