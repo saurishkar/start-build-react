@@ -1,14 +1,16 @@
-
+const path = require('path');
 const config = {
-	entry: 'index.js',
+	entry: path.resolve(__dirname, '../src/index.js'),
 	output: {
-		path: path.resolve(__dirname, '/build/dev'),
+		publicPath: '/',
+		path: path.resolve(__dirname, '../build/dev'),
 		filename: 'build.js'
 	},
 	module: {
 		rules: [
-			{test: /\.js$/, use: 'babel-loader'},
-			{test: /\.css$/, use: 'css-loader'}
+			{test: /\.js$/, use: {loader: 'babel-loader', options: {presets: ['env', 'es2015', 'react']}}, exclude: /(node_modules)/},
+			{test: /\.css$/, use: {loader: 'style-loader!css-loader'}, exclude: /^.*(bootstrap).*\.css$/},
+			{test: /\.json$/, use: {loader: 'json'}}
 		]
 	}
 };
