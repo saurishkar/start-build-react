@@ -1,0 +1,27 @@
+{
+  "name": "start-build-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/saurishkar/start-build-react.git"
+  },
+  "author": "Saurish Kar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saurishkar/start-build-react/issues"
+  },
+  "homepage": "https://github.com/saurishkar/start-build-react#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-plugin-react": "^7.5.1",
+    "react": "^16.2.0",
+    "webpack": "^3.10.0"
+  }
+}
