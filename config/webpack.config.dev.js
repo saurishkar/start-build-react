@@ -2,7 +2,7 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-
+const dotenvConfig = require('dotenv').config();
 const publicPath = '/';
 
 const config = {
@@ -14,7 +14,7 @@ const config = {
 	},
 	module: {
 		rules: [
-			{test: /\.js$/, use: {loader: 'babel-loader', options: {presets: ['es2015', 'react']}}, exclude: /node_modules/},
+			{test: /\.js$/, use: {loader: 'babel-loader', options: {presets: ['env', 'es2015', 'react']}}, exclude: /node_modules/},
 			{
 				test: /\.css$/, 
 				use: ExtractTextWebpackPlugin.extract({
@@ -27,6 +27,7 @@ const config = {
 		]
 	},
 	plugins: [
+		new UglifyJsPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '../src/public/index.html')
 		}),
